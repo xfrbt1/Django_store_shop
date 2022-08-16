@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HYDRA</title>
+</head>
+<h1> HOME PAGE </h1>
+===================================================================
+
+ <nav role="navigation">
+     <a href="/">HOME PAGE</a> |
+     <a href="/about_shop">ABOUT SHOP</a> |
+     <a href="{% url 'shop' %}">CATALOG</a> |
+     <a href="{% url 'cart' %}">CART</a> |
+     <a href="{% url 'login' %}">
+         {% if user.is_authenticated %}
+             {{user.username}}
+         {% else %}
+             LOG IN
+         {% endif %}
+     </a> |
+     <a href="{% url 'logout' %}">LOG OUT</a> |
+   </nav>
+===================================================================
+
+
+<body>
+<h1>WELCOME TO HYDRA SHOP!</h1>
+
+</body>
+

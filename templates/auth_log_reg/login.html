@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>LOG IN</title>
+</head>
+
+
+<body>
+<h2>LOG IN HYDRA ACCOUNT</h2>
+<form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    {{login_form}}
+<input type="submit" value="LOGIN">
+</form>
+
+
+
+<h4>First time in our store? <a href="{% url 'registration' %}">Register!</a></h4>
+
+</body>
+</html>

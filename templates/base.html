@@ -1,0 +1,17 @@
+
+______________________________________________________________________________________________________________
+ <nav role="navigation">
+     <a href="/">HOME PAGE</a> |
+     <a href="/about_shop">ABOUT SHOP</a> |
+     <a href="/catalog">CATALOG</a> |
+     <a href="/cart">CART</a> |
+     <a href="{% url 'login' %}">
+         {% if user.is_authenticated %}
+             {{user.username}}
+         {% else %}
+             LOG IN
+         {% endif %}
+     </a> |
+     <a href="{% url 'logout' %}">LOG OUT</a> |
+   </nav>
+______________________________________________________________________________________________________________

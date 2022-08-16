@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CART</title>
+</head>
+<h1>CART</h1>
+===================================================================
+
+ <nav role="navigation">
+     <a href="/">HOME PAGE</a> |
+     <a href="/about_shop">ABOUT SHOP</a> |
+     <a href="{% url 'shop' %}">CATALOG</a> |
+     <a href="{% url 'cart' %}">CART</a> |
+     <a href="{% url 'login' %}">
+         {% if user.is_authenticated %}
+             {{user.username}}
+         {% else %}
+             LOG IN
+         {% endif %}
+     </a> |
+     <a href="{% url 'logout' %}">LOG OUT</a> |
+   </nav>
+===================================================================
+<body>
+<h1>YOUR CART:</h1>
+{% for item in items %}
+    <div class="row">
+       <div class="col-12 col-md-1 item">
+           №
+        &nbsp;&nbsp;&nbsp;{{ forloop.counter }}
+
+           </div>
+        <div> {{ item.product }}</div>
+
+<!--              <div> {{ item.price }}</div>-->
+               <div> amount: {{ item.quantity }}</div>
+<form method="post" action="{% url 'cart_delete_item' item.pk %}">
+    {% csrf_token %}
+    <button type="submit"><u>DELETE</u></button>
+
+
+</form>
+    </div>
+___________________________________
+{% endfor %}
+<div> TOTAL AMOUNT: {{ cart.amount }}</div>
+<button type="submit"><u>PAY</u></button>
+</body>
+</html>
