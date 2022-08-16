@@ -32,13 +32,21 @@ class Product(models.Model):
     product_id = models.CharField(max_length=255, verbose_name='product_id')
     price = models.DecimalField(max_digits=20, decimal_places=2)
     image_url = models.URLField(blank=True, null=True)
+<<<<<<< HEAD
+=======
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
+>>>>>>> 800faf1 (Initial commit)
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
         ordering = ['pk']
 
     def __str__(self):
+<<<<<<< HEAD
         return f""" product:{self.name}\nprice:{self.price} """
+=======
+        return f""" product:{self.name} """
+>>>>>>> 800faf1 (Initial commit)
 
 
 class Order(models.Model):
@@ -84,7 +92,11 @@ class Order(models.Model):
         if items and self.status == Order.STATUS_CART:
             self.status = Order.STATUS_WAIT
             self.save()
+<<<<<<< HEAD
             auto_payment_unpaid_order(self.user)
+=======
+            # auto_payment_unpaid_order(self.user)
+>>>>>>> 800faf1 (Initial commit)
 
     @staticmethod
     def get_amount_of_unpaid_orders(user: User):
@@ -112,6 +124,7 @@ class OrderItem(models.Model):
         return self.quantity * (self.price - self.discount)
 
 
+<<<<<<< HEAD
 @transaction.atomic()
 def auto_payment_unpaid_order(user: User):
     unpaid_orders = Order.objects.filter(user=user, status=Order.STATUS_WAIT)
@@ -123,6 +136,19 @@ def auto_payment_unpaid_order(user: User):
         order.status = Order.STATUS_PAID
         order.save()
         Payment.objects.create(user=user, amount=-order.amount)
+=======
+# @transaction.atomic()
+# def auto_payment_unpaid_order(user: User):
+#     unpaid_orders = Order.objects.filter(user=user, status=Order.STATUS_WAIT)
+#
+#     for order in unpaid_orders:
+#         if Payment.get_balance(user) < order.amount:
+#             break
+#         order.payment = Payment.objects.all().last()
+#         order.status = Order.STATUS_PAID
+#         order.save()
+#         Payment.objects.create(user=user, amount=-order.amount)
+>>>>>>> 800faf1 (Initial commit)
 
 
 @receiver(post_save, sender=OrderItem)
@@ -139,7 +165,14 @@ def rec_order_amount_delete(sender, instance, **kwargs):
     order.save()
 
 
+<<<<<<< HEAD
 @receiver(post_save, sender=Payment)
 def auto_payment(sender, instanse, **kwargs):
     user = instanse.order
     auto_payment_unpaid_order(user)
+=======
+# @receiver(post_save, sender=Payment)
+# def auto_payment(sender, instance, **kwargs):
+#     user = instance.order
+#     auto_payment_unpaid_order(user)
+>>>>>>> 800faf1 (Initial commit)

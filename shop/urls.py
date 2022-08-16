@@ -9,4 +9,8 @@ urlpatterns = [
     # path('product_detail/<int:pk>', TemplateView.as_view(template_name='shop/shop_detail.html'), name='shop_detail'),
     path('add_item_to_cart/<int:pk>', views.add_item_to_cart, name='add_item_to_cart'),
     path('delete_item/<int:pk>', views.CartDeleteItem.as_view(), name='cart_delete_item'),
+<<<<<<< HEAD
+=======
+    path('make_order', views.make_order, name='make_order'),
+>>>>>>> 800faf1 (Initial commit)
 ]

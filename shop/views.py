@@ -50,3 +50,13 @@ class CartDeleteItem(DeleteView):
         qs = super().get_queryset()
         qs.filter(order__user=self.request.user)
         return qs
+<<<<<<< HEAD
+=======
+
+
+@login_required(login_url=reverse_lazy('login'))
+def make_order(request):
+    cart = Order.get_cart(request.user)
+    cart.make_order()
+    return redirect('shop')
+>>>>>>> 800faf1 (Initial commit)

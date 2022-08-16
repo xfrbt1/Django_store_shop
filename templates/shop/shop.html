@@ -25,12 +25,19 @@
 <body>
 <h1>LIST OF AVAILABLE PRODUCTS:</h1>
 
+<<<<<<< HEAD
 {% for product in object_list %}
+=======
+
+{% for product in object_list reversed %}
+
+>>>>>>> 800faf1 (Initial commit)
 <div class="col-12 col-lg-4 col-md-6 item"></div>
     <div class="card" style="width: 18rem;"></div>
     <form method="post" action="{% url 'add_item_to_cart' product.pk %}">
 
           <div class="card-body">
+<<<<<<< HEAD
               <h3 class="card-title"><b>{{product.name}}</b></h3>
 <!--              <img  src={product.image_url}>-->
 
@@ -38,6 +45,24 @@
               {{product.comment}}
                   </p>
                   <h4 class="card-title"><b>price: {{product.price}}</b></h4>
+=======
+              <h2 class="card-title"><b>{{product.name}}</b></h2>
+<!--              <h6 class="card-title"><b>{{product.image}}</b></h6>-->
+<!--              <img src="{{ product.image }}">-->
+              <div class="media">
+                  {% if product.image %}
+
+                  <img src="{{ product.image.url }}" height="150">
+
+                  {% else %}
+
+                  {% endif %}
+                  <div class="media-body"></div>
+              </div>
+
+              <h4 class="card-title"><b>{{product.comment}}</b></h4>
+              <h3 class="card-title"><b>price: {{product.price}}</b></h3>
+>>>>>>> 800faf1 (Initial commit)
 
               </div>
         <li class="list-group-item">
@@ -49,12 +74,20 @@
         <div class="card-body">
 
 
+<<<<<<< HEAD
             <button class="learn-more-btn" type="submit">buy</button>
+=======
+            <button class="learn-more-btn" type="submit">ADD TO CART</button>
+>>>>>>> 800faf1 (Initial commit)
 
 
     </div>
     </form>
+<<<<<<< HEAD
         ___________________HYDRA___________________
+=======
+        __________________________________________________
+>>>>>>> 800faf1 (Initial commit)
 {% endfor %}
 
 </body>
