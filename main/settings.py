@@ -123,20 +123,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-<<<<<<< HEAD
-=======
 
->>>>>>> 800faf1 (Initial commit)
+
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-<<<<<<< HEAD
-=======
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
->>>>>>> 800faf1 (Initial commit)
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
