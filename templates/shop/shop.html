@@ -1,27 +1,18 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+
+
+{% load static %}
+{% block content %}
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>CATALOG</title>
 </head>
 <h1> CATALOG </h1>
-===================================================================
 
- <nav role="navigation">
-     <a href="/">HOME PAGE</a> |
-     <a href="/about_shop">ABOUT SHOP</a> |
-     <a href="{% url 'shop' %}">CATALOG</a> |
-     <a href="{% url 'cart' %}">CART</a> |
-     <a href="{% url 'login' %}">
-         {% if user.is_authenticated %}
-             {{user.username}}
-         {% else %}
-             LOG IN
-         {% endif %}
-     </a> |
-     <a href="{% url 'logout' %}">LOG OUT</a> |
-   </nav>
-===================================================================
+
 <body>
 <h1>LIST OF AVAILABLE PRODUCTS:</h1>
 
@@ -30,7 +21,6 @@
 
 {% for product in object_list reversed %}
 
-
 <div class="col-12 col-lg-4 col-md-6 item"></div>
     <div class="card" style="width: 18rem;"></div>
     <form method="post" action="{% url 'add_item_to_cart' product.pk %}">
@@ -38,7 +28,6 @@
           <div class="card-body">
 
               <h3 class="card-title"><b>{{product.name}}</b></h3>
-<!--              <img  src={product.image_url}>-->
 
               <p class="card-text">
               {{product.comment}}
@@ -46,13 +35,9 @@
                   <h4 class="card-title"><b>price: {{product.price}}</b></h4>
 
               <h2 class="card-title"><b>{{product.name}}</b></h2>
-<!--              <h6 class="card-title"><b>{{product.image}}</b></h6>-->
-<!--              <img src="{{ product.image }}">-->
               <div class="media">
                   {% if product.image %}
-
                   <img src="{{ product.image.url }}" height="150">
-
                   {% else %}
 
                   {% endif %}
@@ -70,7 +55,6 @@
         </li>
         <div class="card-body">
             <button class="learn-more-btn" type="submit">buy</button>
-
             <button class="learn-more-btn" type="submit">ADD TO CART</button>
 
     </div>
@@ -81,3 +65,4 @@
 </body>
 </html>
 
+{% endblock %}

@@ -1,17 +1,74 @@
+{% load static %}
 
-______________________________________________________________________________________________________________
- <nav role="navigation">
-     <a href="/">HOME PAGE</a> |
-     <a href="/about_shop">ABOUT SHOP</a> |
-     <a href="/catalog">CATALOG</a> |
-     <a href="/cart">CART</a> |
-     <a href="{% url 'login' %}">
+
+<link rel="stylesheet" href="{% static 'btstrp/css/bootstrap.min.css' %}">
+
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #4F4F4F;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 12px 60px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #696969;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a href="/">HOME</a>
+  <a href="{% url 'shop' %}">CATALOG</a>
+  <a href="{% url 'cart' %}">CART</a>
+  <a href="/about_shop">ABOUT</a>
+    <a href="{% url 'login' %}">
          {% if user.is_authenticated %}
              {{user.username}}
          {% else %}
              LOG IN
          {% endif %}
      </a> |
-     <a href="{% url 'logout' %}">LOG OUT</a> |
-   </nav>
-______________________________________________________________________________________________________________
+     <a href="{% url 'logout' %}">LOG OUT</a>
+
+</div>
+
+<div style="padding-left:20px">
+
+</div>
+
+</body>
+</html>
+
+
+{% block content %}
+
+
+
+{% endblock %}
+
+
+
